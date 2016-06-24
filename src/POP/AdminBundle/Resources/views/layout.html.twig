@@ -1,0 +1,20 @@
+{% extends 'POPCoreBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div>
+        <ul style="display: inline">
+            <li> <a href="{{ path('pop_admin_homepage') }}">Accueil</a></li>
+            <li> <a>Users</a></li>
+            <li> <a href="{{ path('pays_index') }}"> Pays</a></li>
+            <li> <a href="{{ path('region_index') }}"> Regions</a></li>
+            <li> <a href="{{ path('ville_index') }}"> Villes</a></li>
+            <li> <a href="{{ path('quartier_index') }}"> Quartiers</a></li>
+            <li> <a href="{{ path('agence_index') }}"> Agences</a></li>
+        </ul>
+    </div>
+    <br>
+
+    {% block admin_body %}{% endblock %}
+
+{% endblock %}

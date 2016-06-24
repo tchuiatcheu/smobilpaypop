@@ -1,0 +1,43 @@
+{% extends 'POPAdminBundle::layout.html.twig' %}
+
+{% block admin_body %}
+    <h1>Pays list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actif</th>
+                <th>Datecreation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pay in pays %}
+            <tr>
+                <td><a href="{{ path('pays_show', { 'id': pay.id }) }}">{{ pay.id }}</a></td>
+                <td>{{ pay.nom }}</td>
+                <td>{% if pay.actif %}Yes{% else %}No{% endif %}</td>
+                <td>{{ pay.dateCreation|date }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('pays_show', { 'id': pay.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pays_edit', { 'id': pay.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pays_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
