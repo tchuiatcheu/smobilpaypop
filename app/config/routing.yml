@@ -1,7 +1,0 @@
-pop_admin:
-    resource: "@POPAdminBundle/Resources/config/routing.yml"
-    prefix:   /admin
-
-pop_core:
-    resource: "@POPCoreBundle/Resources/config/routing.yml"
-    prefix:   /

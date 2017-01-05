@@ -1,3 +1,0 @@
-pop_core_homepage:
-    path:     /
-    defaults: { _controller: POPCoreBundle:Default:index }
