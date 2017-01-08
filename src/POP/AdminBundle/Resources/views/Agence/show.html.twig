@@ -36,6 +36,13 @@
         </tbody>
     </table>
 
+    <hr>
+
+    <div id="map_canvas" style="width:600px;height:300px">
+        {{ ivory_google_map(map) }}
+        {{ ivory_google_api([map]) }}
+    </div>
+
     <ul>
         <li>
             <a href="{{ path('agence_index') }}">Back to the list</a>

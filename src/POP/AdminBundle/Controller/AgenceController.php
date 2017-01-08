@@ -2,6 +2,12 @@
 
 namespace POP\AdminBundle\Controller;
 
+use Ivory\GoogleMap\Base\Coordinate;
+use Ivory\GoogleMap\Helper\MapHelper;
+use Ivory\GoogleMap\Map;
+use Ivory\GoogleMap\MapTypeId;
+use Ivory\GoogleMap\Overlay\Animation;
+use Ivory\GoogleMap\Overlay\Marker;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -61,8 +67,24 @@ class AgenceController extends Controller
     {
         $deleteForm = $this->createDeleteForm($agence);
 
+        //region Google map setup
+        $coord = new Coordinate($agence->getLatitude(), $agence->getLongitude());
+        $marker = new Marker($coord);
+        $marker->setAnimation(Animation::BOUNCE);
+        $marker->setOption('title', $agence->getNom());
+
+        $map = new Map();
+        // Sets the zoom
+        $map->setMapOption('zoom', 15);
+        // Sets the center
+        $map->setCenter($coord);
+
+        $map->getOverlayManager()->addMarker($marker);
+        //endregion
+
         return $this->render('POPAdminBundle:Agence:show.html.twig', array(
             'agence' => $agence,
+            'map' => $map,
             'delete_form' => $deleteForm->createView(),
         ));
     }

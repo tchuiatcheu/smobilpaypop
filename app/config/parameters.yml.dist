@@ -17,3 +17,5 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    google_map_api_key: This is the google map api key for render map in the application
